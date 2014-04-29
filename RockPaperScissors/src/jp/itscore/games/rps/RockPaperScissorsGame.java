@@ -1,5 +1,7 @@
 package jp.itscore.games.rps;
 
+import java.io.IOException;
+
 public class RockPaperScissorsGame {
 
 	// javaの定数はインスタンスごとに別の値を保持できる？staticつけないといけないみたい。
@@ -24,12 +26,7 @@ public class RockPaperScissorsGame {
 			System.out.println("はい：Y いいえ：N");
 
 			// TODO readだと改行コードを含め、2回ループしてしまう。
-			userInput = (char)System.in.read();
-			int leftBytes = System.in.available();
-			long actualSkippedBytes = System.in.skip(leftBytes);
-
-			System.out.println(String.format("入力処理残[%d] スキップ[%d]", leftBytes, actualSkippedBytes));
-
+			userInput = readFrontAndSkipAllLeftBytes();
 			if(userInput == USER_INPUT_NO){
 				System.out.println("ゲームを終了します。");
 				return;
@@ -65,5 +62,21 @@ public class RockPaperScissorsGame {
 
 		System.out.println("プログラムを終了します。");
 
+	}
+
+	/**
+	 * 標準入力より先頭の1文字を読み取り、残りの入力を破棄します
+	 * @return 標準入力より読み取った先頭の1文字
+	 * @throws IOException InputStreamがスローする例外をそのままスローします
+	 */
+	private char readFrontAndSkipAllLeftBytes() throws IOException{
+
+		char userInput = (char)System.in.read();
+		int leftBytes = System.in.available();
+		long actualSkippedBytes = System.in.skip(leftBytes);
+
+		System.out.println(String.format("入力処理残[%d] スキップ[%d]", leftBytes, actualSkippedBytes));
+
+		return userInput;
 	}
 }
