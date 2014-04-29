@@ -21,6 +21,7 @@ public class RockPaperScissorsMain {
 			System.out.println("ゲームを開始しますか？");
 			System.out.println("はい：Y いいえ：N");
 
+			// TODO readだと改行コードを含め、2回ループしてしまう。
 			userInput = (char)System.in.read();
 
 			if(userInput == USER_INPUT_NO){
@@ -29,7 +30,7 @@ public class RockPaperScissorsMain {
 
 		}while(userInput != USER_INPUT_NO && userInput != USER_INPUT_YES);
 
-		// 入力判定 sabun
+		// 入力判定
 
 		// Player1入力受付
 
