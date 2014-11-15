@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" ng-app="MyAngularJs">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <!--<link rel="stylesheet" href="app.css" type="text/css" />-->
+    <script src="Scripts/angular.js" type="text/javascript"></script>
+    <script src="Pages/MainController.js" type="text/javascript"></script>
+    <!--<script src="app.js"></script>-->
+</head>
+<body>
+    <div ng-controller="Controller">
+        <form ng-submit="setValue()">
+            <input type="text" ng-model="newText" />
+            <button type="submit">Set</button>
+        </form>
+        <h1>{{value.Text}}</h1>
+    </div>
+    <!--
+    <h1>TypeScript HTML App</h1>
+
+    <div id="content"></div>
+        -->
+</body>
+</html>
